@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Omni-Attribute: Open-vocabulary Attribute Encoder for Visual Concept Personalization">
+    <meta name="keywords" content="AI, Machine Learning, Computer Vision, Attribute Encoding">
+    <meta property="og:site_name" content="Omni-Attribute">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Omni-Attribute: Open-vocabulary Attribute Encoder for Visual Concept Personalization">
+    <meta property="og:description" content="The first open-vocabulary image attribute encoder designed to learn high-fidelity, attribute-specific representations.">
+    <meta property="og:url" content="">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+    <title>Omni-Attribute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.webp">
+</head>
+
+<body>
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#hero">🎨 Omni-Attribute</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#highlights" class="nav-link">Highlights</a></li>
+                <li class="nav-item"><a href="#methodology" class="nav-link">Methodology</a></li>
+                <li class="nav-item"><a href="#comparisons" class="nav-link">Comparisons</a></li>
+                <li class="nav-item"><a href="#interpretability" class="nav-link">Interpretability</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-main">🎨 Omni-Attribute</span>
+                <span class="hero-title-sub">Open-vocabulary Attribute Encoder for Visual Concept Personalization</span>
+            </h1>
+
+            <div class="hero-authors">
+                <div class="author-list">
+                    <a href="https://tsaishien-chen.github.io/" class="author-link">Tsai-Shien Chen</a>
+                    <a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/" class="author-link">Aliaksandr Siarohin</a>
+                    <a href="https://guochengqian.github.io/" class="author-link">Guocheng Gordon Qian</a>
+                    <a href="https://wangkua1.github.io/" class="author-link">Kuan-Chieh Jackson Wang</a>
+                    <a href="https://scholar.google.com/citations?user=DduS6GQAAAAJ" class="author-link">Egor Nemchinov</a>
+                    <a href="https://moayedha.com/" class="author-link">Moayed Haji-Ali</a>
+                    <a href="https://alpguler.com/" class="author-link">Riza Alp Guler</a>
+                    <a href="https://www.willimenapace.com/" class="author-link">Willi Menapace</a>
+                    <a href="https://skor.sh/" class="author-link">Ivan Skorokhodov</a>
+                    <a href="https://anilkagak2.github.io/" class="author-link">Anil Kag</a>
+                    <a href="https://www.cs.cmu.edu/~junyanz/" class="author-link">Jun-Yan Zhu</a>
+                    <a href="http://www.stulyakov.com/" class="author-link">Sergey Tulyakov</a>
+                </div>
+                <div class="affiliation-logos">
+                    <a href="https://research.snap.com/team/creative-vision" class="affiliation-link" target="_blank">
+                        <img src="./data/logo/logo_snap.svg" alt="Snap Research" class="affiliation-logo">
+                    </a>
+                    <a href="https://www.ucmerced.edu/" class="affiliation-link" target="_blank">
+                        <img src="./data/logo/logo_ucmerced.svg" alt="UC Merced" class="affiliation-logo">
+                    </a>
+                    <a href="https://www.cmu.edu/" class="affiliation-link" target="_blank">
+                        <img src="./data/logo/logo_cmu.svg" alt="Carnegie Mellon University" class="affiliation-logo">
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-video-container" id="hero-video-container">
+                <video class="hero-video" id="hero-video" autoplay playsinline muted>
+                    <source src="data/teaser.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-controls-overlay" id="video-controls-overlay">
+                    <button class="video-play-btn" id="video-play-btn"></button>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="https://snap-research.github.io/omni-attribute" class="btn btn-primary">Read Technical Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section" id="highlights">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title"><em>Omni-Attribute</em> encodes attribute-level representations</h2>
+            </div>
+            <div class="highlights-block fade-in-up">
+                <p class="highlights-description">
+                    Given a reference image and a textual attribute description, <em>Omni-Attribute</em> encodes a high-fidelity, attribute-specific representation, while suppressing other visual concepts. This enables coherent synthesis of the user-specified attributes in new contexts in a fully feed-forward manner, without any test-time optimization.
+                </p>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-disentanglement">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img  src="data/disentanglement/0.webp" alt="Disentanglement Example 1" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/disentanglement/1.webp" alt="Disentanglement Example 2" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/disentanglement/2.webp" alt="Disentanglement Example 3" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/disentanglement/3.webp" alt="Disentanglement Example 4" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="highlights-description footnote">
+                    We show the reference image at the left, the reference attributes in the colored boxes, and the generated image below its conditional reference attribute and text prompt. <br>
+                    All images shown together were generated using the same reference image and the same text prompt.
+                </p>
+            </div>
+
+            <div class="section-header fade-in-up">
+                <h2 class="section-title"><em>Omni-Attribute</em> supports compositional image generation</h2>
+            </div>
+            <div class="highlights-block fade-in-up">
+                <p class="highlights-description">
+                    The learned attribute embeddings are composable, enabling the seamless integration of multiple image attributes into one coherent generated image.
+                </p>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-composition">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="data/composition/0.webp" alt="Composition Example 1" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/composition/1.webp" alt="Composition Example 2" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/composition/2.webp" alt="Composition Example 3" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/composition/3.webp" alt="Composition Example 5" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/composition/4.webp" alt="Composition Example 5" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/composition/5.webp" alt="Composition Example 6" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="highlights-description footnote">
+                    The reference images (left) and the reference attributes (top colored boxes) with the same border color are paired as conditional image–attribute inputs.
+                </p>
+            </div>
+    
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Interactive Demo</h2>
+            </div>
+            <div class="highlights-block fade-in-up">
+                <p class="highlights-description">
+                    <u>Click</u> the image-attribute pairs below to enable or disable its conditional effect. <u>Multiple selections</u> are supported.
+                </p>
+                <div class="highlights-container">
+                    <div class="highlights-inputs">
+                        <div class="highlights-grid">
+                            <div class="highlights-item" data-attribute="vase">
+                                <div class="highlights-image-wrapper">
+                                    <img src="data/composability/reference_vase.webp" alt="Vase Identity" class="highlights-image">
+                                </div>
+                            </div>
+                            <div class="highlights-item" data-attribute="material">
+                                <div class="highlights-image-wrapper">
+                                    <img src="data/composability/reference_material.webp" alt="Material" class="highlights-image">
+                                </div>
+                            </div>
+                            <div class="highlights-item" data-attribute="lighting">
+                                <div class="highlights-image-wrapper">
+                                    <img src="data/composability/reference_lighting.webp" alt="Lighting" class="highlights-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="highlights-line"></div>
+                    <div class="highlights-output">
+                        <div class="highlights-output-wrapper">
+                            <img id="output-image" style="margin-top: 10px;" src="data/composability/output_none.webp" alt="Output Image" class="highlights-output-image">
+                            <p class="highlights-output-caption" style="margin-bottom: -1px;"><em>"A vase is standing against a plain background."</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Practical Applications</h2>
+            </div>
+            <div class="highlights-block fade-in-up">
+                <p class="highlights-description">
+                    We demostrate the practical utility of <em>Omni-Attribute</em> in four real-world application scenarios.
+                </p>
+
+                <!-- Application Buttons -->
+                <div class="applications-buttons">
+                    <button class="application-btn active" data-app="0">Advertisement Image Synthesis</button>
+                    <button class="application-btn" data-app="1">Hairstyle Customization</button>
+                    <button class="application-btn" data-app="2">Storytelling Visualization</button>
+                    <button class="application-btn" data-app="3">Creative Content Generation</button>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-applications">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="data/applications/0_ad_image_synthesis.webp" alt="Advertisement Image Synthesis" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/applications/1_hairstyle_customization.webp" alt="Hairstyle Customization" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/applications/2_storytelling_visualization.webp" alt="Storytelling Visualization" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/applications/3_creative_content_generation.webp" alt="Creative Content Generation" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="section" id="methodology">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How do we make <em>Omni-Attribute</em> work?</h2>
+                <p class="section-subtitle"><u>Click</u> the cards below for more details.</p>
+            </div>
+            <div class="methodology-grid fade-in-up">
+                <div class="methodology-card" data-card="0">
+                    <div class="methodology-card-preview">
+                        <h3 class="methodology-card-title">Semantic Connections between Image Pairs</h3>
+                        <div class="methodology-card-image">
+                            <img src="data/methodology/dataset.webp" alt="Data Annotation" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="methodology-card" data-card="1">
+                    <div class="methodology-card-preview">
+                        <h3 class="methodology-card-title">Attribute-level Representation Learning</h3>
+                        <div class="methodology-card-image">
+                            <img src="data/methodology/losses.webp" alt="Model Training" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="methodology-card" data-card="2">
+                    <div class="methodology-card-preview">
+                        <h3 class="methodology-card-title">Model Architecture</h3>
+                        <div class="methodology-card-image">
+                            <img src="data/methodology/architecture.webp" alt="Model Architecture" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="methodology-card" data-card="3">
+                    <div class="methodology-card-preview">
+                        <h3 class="methodology-card-title">Composition of Multiple Attributes</h3>
+                        <div class="methodology-card-image">
+                            <img src="data/methodology/composition.webp" alt="Personalization" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="methodology-modal" id="methodology-modal">
+                <div class="methodology-modal-overlay"></div>
+                <div class="methodology-modal-content">
+                    <h3 class="methodology-modal-title"></h3>
+                    <div class="methodology-modal-image">
+                        <img src="" alt="" loading="lazy">
+                    </div>
+                    <p class="methodology-modal-description"></p>
+                    <p class="methodology-modal-footnote">Click outside the card to close</p>
+                </div>
+            </div>
+            <div class="methodology-cta fade-in-up">
+                <a href="https://snap-research.github.io/omni-attribute" class="btn btn-primary" target="_blank">Read Technical Report</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Comparisons Section -->
+    <section class="section" id="comparisons">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><em>Omni-Attribute</em> is the state-of-the-art attribute personalization model</h2>
+            </div>
+            <div class="comparison-block fade-in-up">
+                <h3 class="comparison-subtitle">Qualitative Comparisons</h3>
+                <p class="comparison-description">
+                    We compare <em>Omni-Attribute</em> with two groups of baselines for open-vocabulary attribute personalization:<br>
+                    image encoder–based approaches (middle-top) and image editing models (middle-bottom).<br>
+                    <em>Omni-Attribute</em> achieves the best balance between faithfully encoding the target attribute and coherently synthesizing it into new contexts aligned with the prompt.
+                </p>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-personalization">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/0_person_identity.webp" alt="Person Identity" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/1_dog_identity.webp" alt="Dog Identity" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/2_clothing.webp" alt="Clothing" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/3_hairstyle.webp" alt="Hairstyle" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/4_facial_expression.webp" alt="Facial Expression" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/5_makeup.webp" alt="Makeup" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/6_pose.webp" alt="Pose" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/7_foreground_material.webp" alt="Foreground Material" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/8_texture.webp" alt="Texture" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/9_image_lighting.webp" alt="Image Lighting" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/qualitative_comparisons/10_artistic_style.webp" alt="Artistic Style" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="comparison-description footnote">
+                    For encoder-based approaches, we insert IP-Adapter modules between the encoder and the generator to support personalization. The generator then receives the prompt shown below for generation. <br>
+                    For image-editing methods, we combine the reference attribute and the text prompt into a single editing instruction formatted as: "Preserve the [attribute] of the image and generate [prompt]." <br>
+                    More details can be found in the technical report.
+                </p>
+            </div>
+            <div class="comparison-block fade-in-up">
+                <h3 class="comparison-subtitle">Quantitative Comparisons</h3>
+                <p class="comparison-description">
+                    We compare the models on the personalization of two types of attributes: <em>concrete objects</em> and <em>abstract concepts</em>.<br>
+                    We evaluate two metrics: <em>image naturalness</em> and <em>conditioning fidelity</em> (both higher is better), using both MLLM and human evaluations.<br>
+                    <em>Omni-Attribute</em> consistently outperforms baselines in generating coherent and condition-aligned outputs.
+                </p>
+                <div class="quantitative-buttons">
+                    <button class="quantitative-btn active" data-result="0">Concrete Objects</button>
+                    <button class="quantitative-btn" data-result="1">Abstract Concepts</button>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-quantitative">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="data/quantitative_comparisons/concrete_objects.webp" style="max-height: 320px;" alt="Concrete Objects Results" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/quantitative_comparisons/abstract_concepts.webp" style="max-height: 320px;" alt="Abstract Concepts Results" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="comparison-description footnote">
+                    Conditioning fidelity is computed as the average of the text fidelity score and the attribute fidelity score.<br>
+                    The benchmark contains 15 reference attributes, including 5 concrete objects and 10 abstract concepts, with 25 test samples per attribute.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interpretability Section -->
+    <section class="section" id="interpretability">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Interpretability</h2>
+            </div>
+            <div class="interpretability-block fade-in-up">
+                <h3 class="interpretability-subtitle">Visualizations of Attribute Embedding Spaces</h3>
+                <p class="interpretability-description">
+                    We visualize the embedding spaces of the same 60 animal images across three different attributes.<br>
+                    We show that this same set of images is distributed differently and meaningfully across varying attributes.
+                </p>
+
+                <!-- Embedding Space Buttons -->
+                <div class="embedding-buttons">
+                    <button class="embedding-btn active" data-embedding="0">Animal Color</button>
+                    <button class="embedding-btn" data-embedding="1">Animal Species</button>
+                    <button class="embedding-btn" data-embedding="2">Background Environment</button>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel-embeddings">
+                        <div class="carousel-mask">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="data/embedding_spaces/0_animal_color.webp" alt="Animal Color Embedding" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/embedding_spaces/1_animal_species.webp" alt="Animal Species Embedding" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="data/embedding_spaces/2_background_environment.webp" alt="Background Environment Embedding" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="interpretability-description footnote">
+                    We using t-SNE to project 4096-dimensional pooled attribute embeddings into two dimensions for visualization.
+                </p>
+            </div>
+            <div class="interpretability-block fade-in-up">
+                <h3 class="interpretability-subtitle">Attribute-oriented Image Retrieval</h3>
+                <p class="interpretability-description">
+                    The attribute embeddings enable image retrieval based on a specified attribute.<br>
+                    <em>Omni-Attribute</em> surpasses the performance of the text-guided retrieval baseline using GPT-4o and CLIP.
+                </p>
+                <div class="retrieval-container">
+                    <div class="retrieval-left">
+                        <h4 class="retrieval-query-title">Query image</h4>
+                        <div class="retrieval-query-image-wrapper">
+                            <img src="data/retrieval/query.webp" alt="Query image" class="retrieval-query-image" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="retrieval-line"></div>
+                    <div class="retrieval-right">
+                        <h4 class="retrieval-query-title">Top 3 Retrievals</h4>
+                        <div class="carousel-container">
+                            <div class="carousel" id="carousel-retrieval">
+                                <div class="carousel-mask">
+                                    <div class="carousel-track">
+                                        <div class="carousel-slide">
+                                            <img src="data/retrieval/0_clothing.webp" alt="Clothing Retrieval" loading="lazy">
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="data/retrieval/1_facial_expression.webp" alt="Facial Expression Retrieval" loading="lazy">
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="data/retrieval/2_hairstyle.webp" alt="Hairstyle Retrieval" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="15 18 9 12 15 6"></polyline>
+                                    </svg>
+                                </button>
+                                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="retrieval-buttons">
+                    <button class="retrieval-btn active" data-retrieval="0">Clothing</button>
+                    <button class="retrieval-btn" data-retrieval="1">Facial Expression</button>
+                    <button class="retrieval-btn" data-retrieval="2">Hairstyle</button>
+                </div>
+
+                <p class="interpretability-description footnote">
+                    We retrieve the images based on the cosine similarity of the pooled attribute embeddings.
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2025 Omni-Attribute Team. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/composability.js"></script>
+    <script src="assets/js/applications.js"></script>
+    <script src="assets/js/quantitative.js"></script>
+    <script src="assets/js/embeddings.js"></script>
+    <script src="assets/js/retrieval.js"></script>
+    <script src="assets/js/methodology.js"></script>
+    <script src="assets/js/video-controls.js"></script>
+    <script src="assets/js/scroll-animations.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
