@@ -164,7 +164,7 @@ strong {
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
   
   .section-subtitle {

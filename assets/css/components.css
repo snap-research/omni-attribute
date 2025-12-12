@@ -157,7 +157,7 @@
   }
   
   .affiliation-logo {
-    height: 40px;
+    height: 35px;
   }
 }
 
@@ -275,7 +275,7 @@
   }
   
   .hero-title-main {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
   
   .hero-title-sub {
@@ -470,8 +470,10 @@
   opacity: 1;
 }
 
-.highlights-item:hover {
-  transform: scale(1.08);
+@media (hover: hover) {
+  .highlights-item:hover {
+    transform: scale(1.08);
+  }
 }
 
 .highlights-item:nth-child(3) {

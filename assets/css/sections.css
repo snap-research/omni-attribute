@@ -8,6 +8,7 @@
 }
 
 .highlights-block,
+.methodology-block,
 .comparison-block,
 .interpretability-block {
   margin-bottom: var(--spacing-4xl);
@@ -16,6 +17,7 @@
 }
 
 .highlights-block:last-child,
+.methodology-block:last-child,
 .comparison-block:last-child,
 .interpretability-block:last-child {
   margin-bottom: 0;
@@ -34,6 +36,7 @@
 }
 
 .highlights-description,
+.methodology-description,
 .comparison-description,
 .interpretability-description {
   font-size: var(--font-size-lg);
@@ -57,13 +60,14 @@
 @media (max-width: 768px) {  
   .comparison-subtitle,
   .interpretability-subtitle {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
   }
   
   .highlights-description,
+  .methodology-description,
   .comparison-description,
   .interpretability-description {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     padding: 0 var(--spacing-lg);
   }
 }
