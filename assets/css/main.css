@@ -1,7 +1,3 @@
-:root {
-  color-scheme: light only;
-}
-
 body {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
